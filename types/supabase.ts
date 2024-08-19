@@ -9,6 +9,53 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      patients: {
+        Row: {
+          address: string | null;
+          blood_group: string | null;
+          created_at: string | null;
+          dob: string | null;
+          email: string | null;
+          gender: string | null;
+          id: number;
+          name: string | null;
+          phone_no: string | null;
+          user_id: string;
+        };
+        Insert: {
+          address?: string | null;
+          blood_group?: string | null;
+          created_at?: string | null;
+          dob?: string | null;
+          email?: string | null;
+          gender?: string | null;
+          id?: never;
+          name?: string | null;
+          phone_no?: string | null;
+          user_id: string;
+        };
+        Update: {
+          address?: string | null;
+          blood_group?: string | null;
+          created_at?: string | null;
+          dob?: string | null;
+          email?: string | null;
+          gender?: string | null;
+          id?: never;
+          name?: string | null;
+          phone_no?: string | null;
+          user_id?: string;
+        };
+        Relationships: [
+          {
+            foreignKeyName: "patients_user_id_fkey";
+            columns: ["user_id"];
+            isOneToOne: false;
+            referencedRelation: "users";
+            referencedColumns: ["id"];
+          }
+        ];
+      };
       records: {
         Row: {
           checkup_date: string | null;
@@ -17,7 +64,7 @@ export type Database = {
           id: number;
           notes: string | null;
           patient_name: string | null;
-          prescription: string | null;
+          prescriptions: string | null;
           user_id: string;
         };
         Insert: {
@@ -27,7 +74,7 @@ export type Database = {
           id?: never;
           notes?: string | null;
           patient_name?: string | null;
-          prescription?: string | null;
+          prescriptions?: string | null;
           user_id: string;
         };
         Update: {
@@ -37,7 +84,7 @@ export type Database = {
           id?: never;
           notes?: string | null;
           patient_name?: string | null;
-          prescription?: string | null;
+          prescriptions?: string | null;
           user_id?: string;
         };
         Relationships: [

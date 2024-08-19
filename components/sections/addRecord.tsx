@@ -11,10 +11,12 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
+import { LoaderCircle, Plus } from "lucide-react";
 import { addRecord } from "@/app/dashboard/records/actions";
-
+import { useRef, useState } from "react";
 export function AddRecord() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [loading, setLoading] = useState(false);
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,12 +25,21 @@ export function AddRecord() {
           Add Record
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-1/4 md:w-2/4">
-        <form action={addRecord}>
+      <DialogContent className="sm:max-w-1/2">
+        <form
+          ref={formRef}
+          action={async (d) => {
+            setLoading(true);
+            await addRecord(d);
+            formRef.current?.reset();
+            setLoading(false);
+          }}
+        >
           <DialogHeader>
             <DialogTitle>Add Record</DialogTitle>
             <DialogDescription>Add patient record</DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="name" className="text-right">
@@ -61,7 +72,6 @@ export function AddRecord() {
                 <Input
                   type="date"
                   name="date"
-                  placeholder="Asthma"
                   id="diagnosis"
                   className="col-span-3"
                 />
@@ -73,9 +83,9 @@ export function AddRecord() {
               </Label>
               <Input
                 className="col-span-3 max-w-full"
-                name="prescriptions"
+                name="prescription"
                 placeholder="Inhaler prescription renewed, avoid allergens."
-                id="prescriptions"
+                id="prescription"
               />
             </div>
             <div className="grid grid-cols-4 items-start gap-4">
@@ -91,7 +101,14 @@ export function AddRecord() {
             </div>
           </div>
           <DialogFooter>
-            <Button type="submit">Save changes</Button>
+            {loading ? (
+              <Button disabled>
+                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
+                Please wait
+              </Button>
+            ) : (
+              <Button type="submit">Save changes</Button>
+            )}
           </DialogFooter>
         </form>
       </DialogContent>

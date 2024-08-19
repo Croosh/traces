@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/table";
 import { Record } from "@/types/types";
 import { format } from "date-fns";
+import { Button } from "../ui/button";
+import { ReadRecordButton } from "./readRecord";
 
 export default function RecordTable({ records }: { records?: Record[] }) {
   return (
@@ -29,6 +31,9 @@ export default function RecordTable({ records }: { records?: Record[] }) {
               <TableCell>{row.diagnosis}</TableCell>
               <TableCell>
                 {format(new Date(row.checkup_date as string), "MMMM do, yyyy")}
+              </TableCell>
+              <TableCell>
+                <ReadRecordButton record={row} />
               </TableCell>
             </TableRow>
           );

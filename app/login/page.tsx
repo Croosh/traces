@@ -30,8 +30,8 @@ export default async function LoginPage() {
         </CardHeader>
         <CardContent className=" flex flex-col gap-2">
           <OAuthButton />
-          <span className=" text-center">or</span>
-          <form>
+          {/* <span className=" text-center">or</span> */}
+          {/* <form>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
                 <Label htmlFor="email">Email:</Label>
@@ -54,7 +54,7 @@ export default async function LoginPage() {
                 </Button>
               </div>
             </div>
-          </form>
+          </form> */}
         </CardContent>
       </Card>
     </div>
