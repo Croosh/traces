@@ -13,7 +13,7 @@ async function Header() {
       <h1 className=" text-[#7c3aed] font-bold text-xl">Traces</h1>
       <form action={signOut}>
         <div className="flex gap-4 justify-center items-center">
-          <span>{user?.id}</span>
+          <span>{user?.email}</span>
           <Button variant={"outline"} size={"sm"}>
             Sign Out
           </Button>

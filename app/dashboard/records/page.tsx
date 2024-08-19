@@ -1,4 +1,5 @@
 import { AddRecord } from "@/components/sections/addRecord";
+import RecordTable from "@/components/sections/recordTable";
 import { createClient } from "@/utils/supabase/server";
 
 async function Page() {
@@ -18,11 +19,8 @@ async function Page() {
         <h2 className="font-bold text-xl">Records</h2>
         <AddRecord />
       </div>
-      <div className="flex flex-col gap-2">
-        {records?.map((item) => (
-          <li key={item.id}>{item.patient_name}</li>
-        ))}
-      </div>
+      <div className="flex flex-col gap-2"></div>
+      <RecordTable records={records} />
     </div>
   );
 }
