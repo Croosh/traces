@@ -6,6 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Traces",
   description: "Modern ECR for modern teams.",
+  icons: {
+    icon: "./icon.svg",
+  },
 };
 
 export default function RootLayout({

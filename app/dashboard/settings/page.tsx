@@ -7,7 +7,10 @@ async function Page() {
     data: { user },
   } = await supabase.auth.getUser();
   return (
-    <div>
+    <div className="  p-8 flex flex-col gap-3">
+      <div className="flex w-full justify-between items-end">
+        <h2 className="font-bold text-3xl">Settings</h2>
+      </div>
       <form action={signOut}>
         <div className="flex gap-4 justify-center items-center">
           <span>{user?.email}</span>

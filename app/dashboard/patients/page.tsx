@@ -17,12 +17,11 @@ async function Page() {
   console.log(patients);
 
   return (
-    <div>
-      <div className="flex w-full p-4 justify-between">
-        <h2 className="font-bold text-xl">Patients</h2>
+    <div className="  p-8 flex flex-col gap-3">
+      <div className="flex w-full justify-between items-end">
+        <h2 className="font-bold text-3xl">Patients</h2>
         <AddPatient />
       </div>
-      <div className="flex flex-col gap-2"></div>
       <PatientTable patients={patients} />
     </div>
   );

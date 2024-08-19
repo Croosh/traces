@@ -17,12 +17,13 @@ async function Page() {
   console.log(records);
 
   return (
-    <div>
-      <div className="flex w-full p-4 justify-between">
-        <h2 className="font-bold text-xl">Records</h2>
-        <AddRecord />
+    <div className="  p-8 flex flex-col gap-3">
+      <div className="flex w-full justify-between items-end">
+        <h2 className="font-bold text-3xl">Records</h2>
+        <div className="flex gap-2">
+          <AddRecord />
+        </div>
       </div>
-      <div className="flex flex-col gap-2"></div>
       <RecordTable records={records} />
     </div>
   );

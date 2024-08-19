@@ -14,9 +14,11 @@ async function Layout({ children }: { children: ReactNode }) {
   }
   return (
     <div className="overflow-hidden max-w-screen min-h-screen flex flex-col">
-      <Header />
       <div className="flex ">
-        <Sidebar />
+        <div className="flex px-6 py-8 gap-4  flex-col w-1/4 justify-center bg-stone-100">
+          <Header />
+          <Sidebar />
+        </div>
         <Separator orientation="vertical" />
         <div className=" grow">{children}</div>
       </div>
