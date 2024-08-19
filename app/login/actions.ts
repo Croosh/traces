@@ -62,11 +62,11 @@ export async function oAuthSignIn(provider: Provider) {
   if (error) {
     return redirect("/login?message=User could not be authenticated");
   }
-  return redirect(data.url);
+  return redirect("/dashboard");
 }
 
 export async function signOut() {
   const supabase = createClient();
   await supabase.auth.signOut();
-  redirect("/login");
+  redirect("/");
 }
