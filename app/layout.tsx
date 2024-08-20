@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Traces",
-  description: "Modern ECR for modern teams.",
+  description: "   Minimal EMR for Small Medics.",
   icons: {
     icon: "./icon.svg",
   },

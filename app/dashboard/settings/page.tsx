@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/server";
 import { signOut } from "@/app/login/actions";
+
 async function Page() {
   const supabase = createClient();
   const {

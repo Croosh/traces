@@ -12,12 +12,15 @@ async function Layout({ children }: { children: ReactNode }) {
   if (!user) {
     return redirect("/login");
   }
+
   return (
-    <div className="overflow-hidden max-w-screen min-h-screen flex flex-col">
+    <div className="overflow-hidden max-w-screen min-h-screen flex flex-col relative">
       <div className="flex ">
-        <div className="flex px-6 py-8 gap-4  flex-col w-1/4 justify-center bg-stone-100">
+        <div className="flex px-6 py-8 gap-4 flex-col w-1/4 justify-center bg-stone-100">
           <Header />
-          <Sidebar />
+          <div className="flex flex-col">
+            <Sidebar />
+          </div>
         </div>
         <Separator orientation="vertical" />
         <div className=" grow">{children}</div>

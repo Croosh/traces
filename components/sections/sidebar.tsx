@@ -31,7 +31,7 @@ function Sidebar() {
     },
   ];
   return (
-    <div className=" w-full py-8  h-screen   ">
+    <div className=" w-full py-8 h-screen ">
       <div className="flex flex-col items-start gap-1">
         {links.map((link) => {
           const isActive = pathname === link.link;

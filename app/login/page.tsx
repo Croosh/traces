@@ -1,7 +1,3 @@
-import { Input } from "@/components/ui/input";
-import { login, signup } from "./actions";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import {
   Card,
   CardContent,
@@ -22,7 +18,18 @@ export default async function LoginPage() {
     return redirect("/dashboard");
   }
   return (
-    <div className="flex min-h-screen justify-center items-center bg-gradient-to-br from-pink-200 to-lime-200">
+    <div className="flex min-h-screen justify-center items-center bg-gradient-to-br from-[#7c3aed]/20 to-yellow-100 relative">
+      <svg
+        className=" animate-spin-slow absolute top-12 left-12"
+        xmlns="http://www.w3.org/2000/svg"
+        width="84"
+        height="84"
+        viewBox="0 0 24 24"
+        style={{ fill: "#7c3aed" }}
+        // style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"
+      >
+        <path d="M2.047 14.667a.992.992 0 0 0 .466.607l1.909 1.104v2.199a1 1 0 0 0 1 1h2.199l1.104 1.91a1.002 1.002 0 0 0 1.366.366L12 20.75l1.91 1.104a1.002 1.002 0 0 0 1.366-.366l1.103-1.909h2.199a1 1 0 0 0 1-1V16.38l1.909-1.104a.999.999 0 0 0 .366-1.366L20.75 12l1.104-1.909a1 1 0 0 0-.366-1.366l-1.909-1.104V5.422a1 1 0 0 0-1-1H16.38l-1.103-1.909a1.004 1.004 0 0 0-.607-.466.994.994 0 0 0-.759.1L12 3.25l-1.909-1.104a.998.998 0 0 0-1.366.365l-1.104 1.91H5.422a1 1 0 0 0-1 1V7.62L2.513 8.725a1.001 1.001 0 0 0-.365 1.366L3.251 12l-1.104 1.909a1.003 1.003 0 0 0-.1.758z"></path>
+      </svg>{" "}
       <Card className=" w-1/3  p-4 m-4 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
         <CardHeader>
           <CardTitle>Login</CardTitle>

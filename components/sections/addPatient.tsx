@@ -18,12 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Plus } from "lucide-react";
-import { useRef, useState } from "react";
 import { AddPatientAction } from "@/app/dashboard/patients/actions";
+import FormButton from "../ui/FormButton";
+import { Plus } from "lucide-react";
 export function AddPatient() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -33,15 +31,7 @@ export function AddPatient() {
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-3/4">
-        <form
-          ref={formRef}
-          action={async (d) => {
-            setLoading(true);
-            await AddPatientAction(d);
-            formRef.current?.reset();
-            setLoading(false);
-          }}
-        >
+        <form action={AddPatientAction}>
           <DialogHeader>
             <DialogTitle>Add Patient</DialogTitle>
             <DialogDescription>Add patient record</DialogDescription>
@@ -133,15 +123,7 @@ export function AddPatient() {
             </div>
           </div>
           <DialogFooter>
-            {/* {loading ? (
-              <Button disabled>
-                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-                Please wait
-              </Button>
-            ) : (
-              <Button type="submit">Save changes</Button>
-            )} */}
-            <Button type="submit">Save changes</Button>
+            <FormButton />
           </DialogFooter>
         </form>
       </DialogContent>

@@ -13,11 +13,12 @@ import { format } from "date-fns";
 import { ReadRecordButton } from "./readRecord";
 import Fuse from "fuse.js";
 import { Input } from "@/components/ui/input";
+import { Badge } from "../ui/badge";
 export default function RecordTable({ records }: { records?: Record[] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const options = {
     includeScore: false,
-    keys: ["patient_name"],
+    keys: ["patient_name", "diagnosis"],
   };
   let filteredRecords: Record[];
   const fuse = new Fuse(records as Record[], options);
@@ -52,7 +53,9 @@ export default function RecordTable({ records }: { records?: Record[] }) {
                   <TableCell className="font-medium">
                     {row.patient_name}
                   </TableCell>
-                  <TableCell>{row.diagnosis}</TableCell>
+                  <TableCell>
+                    <Badge variant={"outline"}>{row.diagnosis}</Badge>
+                  </TableCell>
                   <TableCell>
                     {format(
                       new Date(row.checkup_date as string),

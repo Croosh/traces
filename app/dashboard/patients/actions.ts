@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache";
 
 export async function AddPatientAction(formData: FormData) {
   const supabase = createClient();
-  console.log("Hello from AddPatientAction");
   const patient_name = formData.get("patientName") as string;
   const dob = formData.get("dob") as string;
   const gender = formData.get("gender") as string;

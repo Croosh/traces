@@ -9,16 +9,19 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { LoaderCircle, Plus } from "lucide-react";
 import { addRecord } from "@/app/dashboard/records/actions";
-import { useRef, useState } from "react";
+import { Plus } from "lucide-react";
+import { Button } from "../ui/button";
+import FormButton from "../ui/FormButton";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
+
 export function AddRecord() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button>
           <Plus width={16} />
@@ -27,12 +30,11 @@ export function AddRecord() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-1/2">
         <form
-          ref={formRef}
-          action={async (d) => {
-            setLoading(true);
-            await addRecord(d);
-            formRef.current?.reset();
-            setLoading(false);
+          onSubmit={async (e) => {
+            e.preventDefault();
+            const form = e.target as HTMLFormElement;
+            const formData = new FormData(form);
+            await addRecord(formData).then(() => setOpen(false));
           }}
         >
           <DialogHeader>
@@ -101,14 +103,14 @@ export function AddRecord() {
             </div>
           </div>
           <DialogFooter>
-            {loading ? (
-              <Button disabled>
-                <LoaderCircle className="mr-2 h-4 w-4 animate-spin" />
-                Please wait
-              </Button>
-            ) : (
-              <Button type="submit">Save changes</Button>
-            )}
+            <Button
+              disabled={!open}
+              type="submit"
+              className=" flex gap-2 justify-center items-center"
+            >
+              {!open ? <Loader2 width={18} className=" animate-spin" /> : null}
+              {!open ? "Creating" : "Create"}
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

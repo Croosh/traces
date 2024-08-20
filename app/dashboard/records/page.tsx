@@ -14,8 +14,6 @@ async function Page() {
     return <div>Error loading records</div>;
   }
 
-  console.log(records);
-
   return (
     <div className="  p-8 flex flex-col gap-3">
       <div className="flex w-full justify-between items-end">
